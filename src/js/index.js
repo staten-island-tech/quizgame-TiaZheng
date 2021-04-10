@@ -14,4 +14,6 @@ const choice1 = document.getElementById("1");
 const choice2 = document.getElementById("2");
 const choice3 = document.getElementById("3");
 
-con
+const progress = document.getElementById("progress");
+
+const scoreContainer = document.getElementById("scoreContanier");
