@@ -28,16 +28,16 @@ Quiz.prototype.isEnded = function() {
   return this.questionIndex === this.questions.length;
 }
 
-//another object constructor function, refers to the answer choices aspect
-function Question(text, choices, answer) {
-  this.text = text;
-  this.choices = choices;
-  this.answer = answer;
-}
-//new property to the object constructor function "Questions", if the choice selected is equal to the answer, it is correct
-Question.prototype.isCorrectAnswer = function(choice) {
-  return this.answer === choice;
-}
+// //another object constructor function, refers to the answer choices aspect
+// function Question(text, choices, answer) {
+//   this.text = text;
+//   this.choices = choices;
+//   this.answer = answer;
+// }
+// //new property to the object constructor function "Questions", if the choice selected is equal to the answer, it is correct
+// Question.prototype.isCorrectAnswer = function(choice) {
+//   return this.answer === choice;
+// }
 
 //if quiz ends, run show score function, if not, keep showing next questions
 function final() {
@@ -49,14 +49,49 @@ function final() {
       let element = document.getElementById("question");
       element.innerHTML = quiz.getQuestionIndex().text;
 
-      // show corresponding answer choices to each question
       let choices = quiz.getQuestionIndex().choices;
-      for(let i = 0; i < choices.length; i++) {
-          let element = document.getElementById("choice" + i);
-          element.innerHTML = choices[i];
-          guess("btn" + i, choices[i]);
-      }
-      //run showProgress function
+      choices.forEach((choices, x) => {
+         let element = document.getElementById("choice" + x);
+       element.innerHtml = choices;
+       guess("btn" + x, choices);
+     });
+     
+
+      // show corresponding answer choices to each question
+      // let choices = quiz.getQuestionIndex().choices;
+      // for(let i = 0; i < choices.length; i++) {
+      //     let element = document.getElementById("choice" + i);
+      //     element.innerHTML = choices[i];
+      //     guess("btn" + i, choices[i]);
+      // }
+  
+
+      // //run showProgress function
+
+//       let choices = quiz.getQuestionIndex().choices;
+//       // loop through each choice and display on page
+//       choices.forEach((choice, x) => {
+//         console.log(choice);
+//         //let choiceText = choices[x]; //connects choice text to its number
+//         let choiceId = "choice" + x; //refers to html ids: "choice0", "choice1", etc
+//         this.populateIdWithHTML(choiceId, choice);
+//         this.checkAnswer(choiceId, choice);
+//       });
+
+//       for(i = 0; i < grounds.length; i++) {
+//         grounds[i].show();
+//     }
+// grounds.forEach(item => item.show())
+
+
+
+
+
+
+
+
+
+
       showProgress();
   }
 };
@@ -86,14 +121,15 @@ function showScores() {
 };
 
 // create questions+answers
-const questions = [
+/*const questions = [
   new Question("Who is the current highest rated chess player? ", ["Magnus Carlsen", "Fabiano Cauana","Bobby Fisher", "Ding Liren"], "Magnus Carlsen"),
   new Question("What is the most important piece in chess?", ["Queen", "Pawn", "King", "Rook"], "King"),
   new Question("How many squares does a chess board have in total?", ["56", "64","72", "58"], "64"),
   new Question("En passant is a special rule in chess that involves which of the following pieces?", ["Knight", "Bishop", "Rook", "Pawn"], "Pawn"),
   new Question("Bonus! Tia's favorite white chess opening to play is...?", ["Italian Game", "Sicilian Defense", "The Queen's Gambit", "All of the above!"], "Italian Game")
-];
+];*/
 
+import { questions } from "./questions.js";
 
 //new operator ceates new object that binds to "this", adds "return this" at the end 
 // create quiz
