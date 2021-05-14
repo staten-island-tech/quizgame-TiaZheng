@@ -45,17 +45,35 @@ function final() {
       showScores();
   }
   else {
-      // show next questions
-      let element = document.getElementById("question");
-      element.innerHTML = quiz.getQuestionIndex().text;
+    let element = document.getElementById("question");
+      if (element) element.innerHTML = quiz.getQuestionIndex().text;
 
       let choices = quiz.getQuestionIndex().choices;
-      choices.forEach((choices, x) => {
+      choices.forEach((choice, x) => {
          let element = document.getElementById("choice" + x);
-       element.innerHtml = choices;
-       guess("btn" + x, choices);
-     });
+        console.log(element, choice);
+        
+        if (element) {
+       element.innerText = choice;
+       guess("btn" + x, choice);
+        }
+        })
+
+    showProgress();
+  }
+};
+      // show next questions
+    //   let element = document.getElementById("question");
+    //   element.innerHTML = quiz.getQuestionIndex().text;
+
+    //   let choices = quiz.getQuestionIndex().choices;
+    //   choices.forEach((choices, x) => {
+    //      let element = document.getElementById("choice" + x);
+    //    element.innerHtml = choices;
+    //    guess("btn" + x, choices);
+    //  });
      
+    
 
       // show corresponding answer choices to each question
       // let choices = quiz.getQuestionIndex().choices;
@@ -92,9 +110,7 @@ function final() {
 
 
 
-      showProgress();
-  }
-};
+
 
 //function to click the button to select answer
 function guess(id, guess) {
