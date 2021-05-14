@@ -48,16 +48,23 @@ function final() {
     let element = document.getElementById("question");
       if (element) element.innerHTML = quiz.getQuestionIndex().text;
 
-      let choices = quiz.getQuestionIndex().choices;
-      choices.forEach((choice, x) => {
-         let element = document.getElementById("choice" + x);
-        console.log(element, choice);
+      // let choices = quiz.getQuestionIndex().choices;
+      // choices.forEach((choice, x) => {
+      //    let element = document.getElementById("choice" + x);
+      //   console.log(element, choice);
         
-        if (element) {
-       element.innerText = choice;
-       guess("btn" + x, choice);
-        }
-        })
+      //   if (element) {
+      //  element.innerText = choice;
+      //  guess("btn" + x, choice);
+      //   }
+      //   })
+
+        let choices = quiz.getQuestionIndex().choices;
+      choices.forEach((choices, i) => {
+         let element = document.getElementById("choice" + i );
+       element.innerText = choices;
+       guess("btn" + i, choices);
+     });
 
     showProgress();
   }
